@@ -1,4 +1,4 @@
-package com.crazyang.service;
+package com.crazyang.service.impl;
 
 import com.crazyang.entity.JwtUser;
 import com.crazyang.entity.User;
