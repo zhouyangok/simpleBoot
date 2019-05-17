@@ -1,7 +1,7 @@
 package com.crazyang.service;
 
-import com.crazyang.User.JwtUser;
-import com.crazyang.User.User;
+import com.crazyang.entity.JwtUser;
+import com.crazyang.entity.User;
 import com.crazyang.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,9 +22,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
+    /**
+     * 授权的时候是对角色授权，而认证的时候应该基于资源，而不是角色，因为资源是不变的，而用户的角色是会变的
+     */
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userDao.findByUsername(s);
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        User user = userDao.findByUsername(name);
+        if(user ==null){
+            throw new UsernameNotFoundException("用户不存在");
+        }
         return new JwtUser(user);
     }
 }

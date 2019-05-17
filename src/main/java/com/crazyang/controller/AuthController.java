@@ -1,6 +1,6 @@
 package com.crazyang.controller;
 
-import com.crazyang.User.User;
+import com.crazyang.entity.User;
 import com.crazyang.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -39,4 +39,6 @@ public class AuthController {
     public String testDemo(){
         return "hello world";
     }
+
+
 }

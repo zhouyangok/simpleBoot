@@ -1,4 +1,4 @@
-package com.crazyang;
+package com.crazyang.core;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.AuthenticationException;

@@ -1,6 +1,6 @@
 package com.crazyang.dao;
 
-import com.crazyang.User.User;
+import com.crazyang.entity.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**

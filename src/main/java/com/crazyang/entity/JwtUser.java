@@ -1,4 +1,4 @@
-package com.crazyang.User;
+package com.crazyang.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -40,6 +40,10 @@ public class JwtUser implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public Integer getId(){
+        return id;
     }
 
     @Override

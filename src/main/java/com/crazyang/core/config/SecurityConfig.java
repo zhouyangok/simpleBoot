@@ -1,9 +1,9 @@
-package com.crazyang.config;
+package com.crazyang.core.config;
 
 
-import com.crazyang.JWTAuthenticationEntryPoint;
-import com.crazyang.filter.JWTAuthenticationFilter;
-import com.crazyang.filter.JWTAuthorizationFilter;
+import com.crazyang.core.JWTAuthenticationEntryPoint;
+import com.crazyang.core.filter.JWTAuthenticationFilter;
+import com.crazyang.core.filter.JWTAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

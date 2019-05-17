@@ -1,4 +1,4 @@
-package com.crazyang.User;
+package com.crazyang.entity;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package com.crazyang.utils;
+package com.crazyang.core.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

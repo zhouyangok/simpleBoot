@@ -1,8 +1,8 @@
-package com.crazyang.filter;
+package com.crazyang.core.filter;
 
-import com.crazyang.User.JwtUser;
+import com.crazyang.entity.JwtUser;
 import com.crazyang.model.LoginUser;
-import com.crazyang.utils.JwtTokenUtils;
+import com.crazyang.core.utils.JwtTokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -71,7 +71,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             role = authority.getAuthority();
         }
 
+        //创建token，并将用户信息写入redis，key为token，value为用户信息
         String token = JwtTokenUtils.createToken(jwtUser.getUsername(), role, isRemember);
+        //创建token，并将用户信息写入redis，key为token，value为用户信息
 //        String token = JwtTokenUtils.createToken(jwtUser.getUsername(), false);
         // 返回创建成功的token
         // 但是这里创建的token只是单纯的token

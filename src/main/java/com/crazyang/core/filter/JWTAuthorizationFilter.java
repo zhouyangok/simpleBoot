@@ -1,6 +1,6 @@
-package com.crazyang.filter;
+package com.crazyang.core.filter;
 
-import com.crazyang.utils.JwtTokenUtils;
+import com.crazyang.core.utils.JwtTokenUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
