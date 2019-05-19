@@ -4,6 +4,8 @@ import com.crazyang.entity.JwtUser;
 import com.crazyang.model.LoginUser;
 import com.crazyang.core.utils.JwtTokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,6 +29,8 @@ import java.util.Collection;
  */
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    Logger logger = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
 
     private ThreadLocal<Integer> rememberMe = new ThreadLocal<>();
     private AuthenticationManager authenticationManager;
@@ -62,7 +66,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             Authentication authResult) throws IOException, ServletException {
 
         JwtUser jwtUser = (JwtUser) authResult.getPrincipal();
-        System.out.println("jwtUser:" + jwtUser.toString());
+        logger.info("jwtUser:+{}" + jwtUser.toString());
         boolean isRemember = rememberMe.get() == 1;
 
         String role = "";
