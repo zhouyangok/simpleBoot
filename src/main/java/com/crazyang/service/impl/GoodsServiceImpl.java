@@ -33,7 +33,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public GoodsBo getseckillGoodsBoByGoodsId(long goodsId) {
-        return null;
+        return goodsMapper.selectGoodsById(goodsId);
     }
 
     @Override

@@ -35,4 +35,18 @@ public interface GoodsMapper {
             @Result(property = "goodsDetail", column = "goods_detail"),
     })
     List<GoodsBo> selectAllGoods ();
+
+    @Select("Select * from goods where id=#{goodsId}")
+    @Results({
+            @Result(property = "id", column = "id"),
+            @Result(property = "goodsName", column = "goods_name"),
+            @Result(property = "goodsTitle", column = "goods_title"),
+            @Result(property = "goodsImg", column = "goods_img"),
+            @Result(property = "goodsPrice", column = "goods_price"),
+            @Result(property = "goodsStock", column = "goods_stock"),
+            @Result(property = "createDate", column = "create_date"),
+            @Result(property = "updateDate", column = "update_date"),
+            @Result(property = "goodsDetail", column = "goods_detail"),
+    })
+    GoodsBo selectGoodsById(long goodsId);
 }

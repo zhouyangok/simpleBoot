@@ -29,8 +29,6 @@ import java.util.List;
  * @Author zhouyang
  * @Date 2019/5/17 下午4:50.
  */
-
-
 @Controller
 @RequestMapping("/web/goods")
 public class GoodsController {
@@ -74,6 +72,7 @@ public class GoodsController {
      * @return
      */
     @GetMapping("/detail/{goodsId}")
+    @ResponseBody
     public Result goodsDetail(Model model, @PathVariable long goodsId, HttpServletRequest request, HttpServletResponse response) {
         //
         GoodsBo goodsBo = goodsService.getseckillGoodsBoByGoodsId(goodsId);
@@ -86,5 +85,4 @@ public class GoodsController {
             return Result.success(vo);
         }
     }
-
 }
