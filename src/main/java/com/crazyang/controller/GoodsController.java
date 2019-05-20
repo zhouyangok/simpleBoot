@@ -33,7 +33,6 @@ import java.util.List;
 @RequestMapping("/web/goods")
 public class GoodsController {
 
-
     @Autowired
     RedisService redisService;
     @Autowired

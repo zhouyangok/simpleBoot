@@ -1,11 +1,15 @@
 package com.crazyang.core.filter;
 
+import com.crazyang.core.common.Const;
+import com.crazyang.core.redis.RedisService;
+import com.crazyang.core.redis.UserKey;
 import com.crazyang.entity.JwtUser;
 import com.crazyang.model.LoginUser;
 import com.crazyang.core.utils.JwtTokenUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -29,6 +33,9 @@ import java.util.Collection;
  */
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+
+    @Autowired
+    RedisService redisService;
 
     Logger logger = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
 
@@ -77,6 +84,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         //创建token，并将用户信息写入redis，key为token，value为用户信息
         String token = JwtTokenUtils.createToken(jwtUser.getUsername(), role, isRemember);
+//        redisService.set(UserKey.getByName,token,jwtUser.getId(), Const.RedisCacheExtime.REDIS_SESSION_EXTIME );
         //创建token，并将用户信息写入redis，key为token，value为用户信息
 //        String token = JwtTokenUtils.createToken(jwtUser.getUsername(), false);
         // 返回创建成功的token

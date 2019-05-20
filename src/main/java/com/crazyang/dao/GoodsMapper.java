@@ -36,9 +36,13 @@ public interface GoodsMapper {
     })
     List<GoodsBo> selectAllGoods ();
 
-    @Select("Select * from goods where id=#{goodsId}")
+    @Select("Select * from goods left join seckill_goods sg on sg.goods_id = goods.id where goods.id=#{goodsId}")
     @Results({
             @Result(property = "id", column = "id"),
+            @Result(property = "seckillPrice", column = "seckill_rice"),
+            @Result(property = "stockCount", column = "stock_count"),
+            @Result(property = "startDate", column = "start_date"),
+            @Result(property = "endDate", column = "end_date"),
             @Result(property = "goodsName", column = "goods_name"),
             @Result(property = "goodsTitle", column = "goods_title"),
             @Result(property = "goodsImg", column = "goods_img"),
