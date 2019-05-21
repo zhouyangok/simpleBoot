@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MQConfig {
 
-    public static final String MIAOSHA_QUEUE = "seckill.queue";
+    public static final String MIAOSHA_QUEUE = "miaosha.queue";
     public static final String FAHUO_QUEUE = "fahuo.queue";
 
 

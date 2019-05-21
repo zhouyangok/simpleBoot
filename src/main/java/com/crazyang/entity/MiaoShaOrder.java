@@ -11,6 +11,9 @@ import lombok.*;
 
 @Setter
 @Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class MiaoShaOrder {
 
     private Integer id;

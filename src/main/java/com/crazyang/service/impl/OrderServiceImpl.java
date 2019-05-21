@@ -22,11 +22,16 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public MiaoShaOrder getMiaoShaOrderByUserIdAndGoodsId(long userId, long goodsId) {
-        return orderMapper.getMiaoShaOrderByUserIdAndGoodsId(userId, goodsId);
+        return orderMapper.selectByUserIdAndGoodsId(userId, goodsId);
     }
 
     @Override
     public List getList(long id) {
       return   orderMapper.getList(id);
+    }
+
+    @Override
+    public long addOrder(MiaoShaOrder miaoShaOrder) {
+        return orderMapper.addOrder(miaoShaOrder);
     }
 }

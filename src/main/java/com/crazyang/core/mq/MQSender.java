@@ -24,7 +24,8 @@ public class MQSender {
 
     public void sendMiaoShaMessage(MiaoShaMessage message){
         String msg = RedisService.beanToString(message);
-        logger.info(msg);
-        amqpTemplate.convertAndSend(MQConfig.MIAOSHA_QUEUE,message);
+        String mes= "hllo";
+        logger.info("rabbitmq发送消息:"+msg);
+        amqpTemplate.convertAndSend(MQConfig.MIAOSHA_QUEUE,msg);
     }
 }

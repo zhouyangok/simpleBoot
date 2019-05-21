@@ -2,6 +2,8 @@ package com.crazyang.core.mq;
 
 import com.crazyang.entity.User;
 
+import java.io.Serializable;
+
 /**
  * @ClassName MiaoShaMessage
  * @Description: TODO
@@ -9,8 +11,8 @@ import com.crazyang.entity.User;
  * @Date 2019/5/20 上午9:16.
  */
 
-public class MiaoShaMessage {
-    private User user;
+public class MiaoShaMessage implements Serializable {
+//    private User user;
     private long userId;
     private long goodsId;
 
@@ -22,13 +24,13 @@ public class MiaoShaMessage {
         this.userId = userId;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public long getGoodsId() {
         return goodsId;

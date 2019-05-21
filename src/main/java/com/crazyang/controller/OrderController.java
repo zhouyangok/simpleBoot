@@ -1,6 +1,7 @@
 package com.crazyang.controller;
 
 import com.crazyang.bo.GoodsBo;
+import com.crazyang.core.aop.log.LogConfig;
 import com.crazyang.core.mq.MQSender;
 import com.crazyang.core.mq.MiaoShaMessage;
 import com.crazyang.core.redis.RedisService;
@@ -39,6 +40,7 @@ public class OrderController {
     @Autowired
     private MQSender mqSender;
 
+    @LogConfig("用户下单")
     @ApiOperation(value = "用户下单")
     @PostMapping("/userOrder")
     @ResponseBody
@@ -55,6 +57,7 @@ public class OrderController {
             return Result.error(CodeMsg.MIAO_SHA_OVER);
         }
         //3.判断是否已经秒杀
+        List list = orderService.getList(goodsId);
         MiaoShaOrder order = orderService.getMiaoShaOrderByUserIdAndGoodsId(userId, goodsId);
         if (order != null) {
             return Result.error(CodeMsg.REPEATE_MIAOSHA);

@@ -16,4 +16,6 @@ public interface OrderService {
     MiaoShaOrder getMiaoShaOrderByUserIdAndGoodsId(long userId, long goodsId);
 
     List getList(long id);
+
+    long addOrder(MiaoShaOrder miaoShaOrder);
 }

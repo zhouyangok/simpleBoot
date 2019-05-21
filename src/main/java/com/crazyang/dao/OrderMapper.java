@@ -1,10 +1,8 @@
 package com.crazyang.dao;
 
 import com.crazyang.entity.MiaoShaOrder;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import com.crazyang.entity.OrderInfo;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,8 +23,12 @@ public interface OrderMapper {
             @Result(property = "goodsId", column = "goods_id"),
             @Result(property = "orderId", column = "order_id"),
     })
-    MiaoShaOrder getMiaoShaOrderByUserIdAndGoodsId(long userId, long goodsId);
+    MiaoShaOrder selectByUserIdAndGoodsId(@Param("userId")long userId,@Param("goodsId") long goodsId);
 
-    @Select("Select * from miaosha where id=#{id}")
+    @Select("Select * from miaosha_order where id=#{id}")
     List getList(long id);
+
+
+    @Insert("insert into miaosha_order(user_id, goods_id,order_id) values (#{userId}, #{goodsId},#{orderId})")
+    long addOrder(MiaoShaOrder miaoShaOrder);
 }
