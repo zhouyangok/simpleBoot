@@ -2,10 +2,8 @@ package com.crazyang.dao;
 
 
 import com.crazyang.bo.GoodsBo;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import com.crazyang.entity.Goods;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -53,4 +51,10 @@ public interface GoodsMapper {
             @Result(property = "goodsDetail", column = "goods_detail"),
     })
     GoodsBo selectGoodsById(long goodsId);
+
+
+    @Insert("insert into goods(goods_name,goods_title,goods_img,goods_detail,goods_price,goods_stock,create_date)" +
+            "values(#{goodsName},#{goodsTitle},#{goodsImg},#{goodsDetail},#{goodsPrice},#{goodsStock},#{createDate})")
+    int insertGoods(Goods goods);
+
 }

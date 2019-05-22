@@ -2,9 +2,11 @@ package com.crazyang.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.crazyang.bo.GoodsBo;
+import com.crazyang.core.aop.log.LogConfig;
 import com.crazyang.core.common.Const;
 import com.crazyang.core.redis.GoodsKey;
 import com.crazyang.core.redis.RedisService;
+import com.crazyang.entity.Goods;
 import com.crazyang.result.CodeMsg;
 import com.crazyang.result.Result;
 import com.crazyang.service.GoodsService;
@@ -14,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -83,5 +82,13 @@ public class GoodsController {
             vo.setGoods(goodsBo);
             return Result.success(vo);
         }
+    }
+
+    @LogConfig("新增商品")
+    @PutMapping("/insertGoods")
+    @ResponseBody
+    public Result insertGoods(HttpServletRequest request,Goods goods){
+        int result = goodsService.insertGoods(goods);
+        return Result.success(result);
     }
 }

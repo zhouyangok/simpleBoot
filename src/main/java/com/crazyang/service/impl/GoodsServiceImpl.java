@@ -1,7 +1,9 @@
 package com.crazyang.service.impl;
 
 import com.crazyang.bo.GoodsBo;
+import com.crazyang.core.exception.GlobalException;
 import com.crazyang.dao.GoodsMapper;
+import com.crazyang.entity.Goods;
 import com.crazyang.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
     private GoodsMapper goodsMapper;
+
     @Override
     public List<GoodsBo> getGoodsList() {
         return goodsMapper.selectAllGoods();
@@ -39,5 +42,15 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public int reduceStock(long goodsId) {
         return 0;
+    }
+
+    @Override
+    public int insertGoods(Goods goods) {
+        try {
+            return goodsMapper.insertGoods(goods);
+        } catch (Exception e) {
+            throw new GlobalException(e.getMessage());
+        }
+
     }
 }

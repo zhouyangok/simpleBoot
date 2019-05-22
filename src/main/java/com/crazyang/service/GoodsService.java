@@ -1,6 +1,7 @@
 package com.crazyang.service;
 
 import com.crazyang.bo.GoodsBo;
+import com.crazyang.entity.Goods;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface GoodsService {
     GoodsBo getseckillGoodsBoByGoodsId(long goodsId);
 
     int reduceStock(long goodsId);
+
+    int insertGoods(Goods goods);
 }

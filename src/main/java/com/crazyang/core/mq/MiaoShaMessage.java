@@ -1,6 +1,5 @@
 package com.crazyang.core.mq;
 
-import com.crazyang.entity.User;
 
 import java.io.Serializable;
 
